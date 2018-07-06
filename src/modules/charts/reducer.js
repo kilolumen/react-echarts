@@ -18,6 +18,10 @@ const initialState = {
       {
          path: 'graph',
          name: '关系图'
+      },
+      {
+        path: 'line',
+        name: '分布图'
       }
    ],
    heatmap: [[]],

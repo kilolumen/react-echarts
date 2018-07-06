@@ -13,6 +13,7 @@ import HeatmapChart from '../containers/HeatmapChart';
 import MapChart from '../containers/MapChart';
 import ParallelChart from '../containers/ParallelChart';
 import GraphChart from '../containers/GraphChart';
+import LineChart from '../containers/LineChart';
 
 const Root = () => (
    <div>
@@ -27,6 +28,7 @@ const Root = () => (
                      <Route path="/map" component={MapChart} />
                      <Route path="/parallel" component={ParallelChart} />
                      <Route path="/graph" component={GraphChart} />
+                     <Route path="/line" component={LineChart}/>
                      <Route render={() => <Redirect to="/" />} />
                   </Switch>
                </App>
