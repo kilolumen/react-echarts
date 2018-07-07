@@ -1,4 +1,6 @@
 // mock.js 配置假数据
+const mysql = require('mysql')
+
 
 const Mock = require('mockjs');
 

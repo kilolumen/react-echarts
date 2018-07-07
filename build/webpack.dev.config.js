@@ -23,6 +23,12 @@ module.exports = merge(baseWebpackConfig, {
          }
       ]
    },
+  node: {
+    console: true,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  },
    plugins: [
       new CleanWebpackPlugin(['dev'], { root: common.context }),
       new webpack.NamedModulesPlugin(),
