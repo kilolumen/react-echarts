@@ -71,6 +71,16 @@ module.exports = {
          {
             test: require.resolve(common.requestModule),
             loader: 'imports-loader?basicRequestLink=>' + JSON.stringify(current.conf.basicRequestLink)
+         },
+         {
+           test: /\.mysql$/,
+           loader: 'mysql-loader',
+           query: {
+             host: 'localhost',
+             user: 'root',
+             password: 'lidongjie',
+             database: 'mydb'
+           }
          }
       ]
    },
