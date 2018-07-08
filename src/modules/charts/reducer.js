@@ -21,7 +21,7 @@ const initialState = {
       },
       {
         path: 'line',
-        name: '分布图'
+        name: '总时长分布图'
       }
    ],
    heatmap: [[]],
