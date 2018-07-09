@@ -11,7 +11,7 @@ import 'echarts/lib/chart/line';
 import Chart from '../components/Chart/index';
 import { getChart } from '../modules/charts/actions';
 
-class LineChart extends Component {
+class NetworkLineChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,8 +19,8 @@ class LineChart extends Component {
     };
   }
   async componentWillMount() {
-    const path = '/line';
-    const key = 'line';
+    const path = '/network';
+    const key = 'network';
 
     await this.props.getChart({ path, key });
   }
@@ -34,13 +34,13 @@ class LineChart extends Component {
     // const {data1, data2, data3} = this.props.charts.line;
     return {
       title: {
-        text: '总时长分布图'
+        text: '网络差异分析'
       },
       tooltip: {
         trigger: 'axis'
       },
       legend: {
-        data: ['全链路', 'getAd', 'image']
+        data: ['wifi', '2G', '3G', '4G']
       },
       xAxis: {
         type: 'category',
@@ -57,29 +57,35 @@ class LineChart extends Component {
       },
       series: [
         {
-        name: '全链路',
-          data: [0, 137, 592, 2127, 4728, 7809, 13487, 21652, 32350, 42274, 46617, 47627, 43618,
-            37272, 34440, 40402, 44136, 33269, 26054, 21349, 18106, 15816, 14152, 12977, 11112, 10224,
-            9694, 9053, 8160, 7335, 6405, 5610, 5321, 4879, 4303, 3883, 3495, 3267, 63245],
-        type: 'line',
-        smooth: true
-        },
-        {
-          name: 'getAd',
-          data: [10, 9908, 60629, 147016, 170396, 107686, 50617, 24837, 14235, 9048, 6303, 4822,
-            4174, 4032, 3534, 3296, 2914, 2534, 1921, 1599, 1266, 1069, 950, 1111, 1200, 1393, 1306, 1130,
-            883, 727, 639, 585, 668, 688, 540, 521, 478, 463, 19160],
+          name: 'wifi',
+          data: [0, 0, 4, 217, 979, 2157, 3910, 5137, 5657, 5821, 5421, 4787, 4150, 3969, 5166, 6273,
+            5874, 5157, 4656, 3894, 3340, 2784, 2450, 2239, 1988, 1907, 1853, 1683, 1619, 1442, 1238,
+            1119, 1070, 880, 857, 859, 751, 690, 14073],
           type: 'line',
           smooth: true
         },
         {
-          name: 'image',
-          data: [514, 1584, 5553, 20767, 44487, 64137, 67358, 60027, 47284, 35432, 26842, 43028,
-            47387, 27039, 23279, 19607, 17247, 14776, 13140, 10989, 9512, 8616, 9100, 8069, 7117, 6379,
-            5390, 4781, 4238, 3572, 3177, 2751, 2575, 2626, 2396, 2118, 1836, 1669, 31833],
+          name: '2G',
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13],
           type: 'line',
           smooth: true
         },
+        {
+          name: '3G',
+          data: [0, 0, 0, 0, 0, 1, 5, 3, 18, 52, 107, 136, 164, 181, 155, 170, 209, 198, 149, 127,
+            123, 125, 128, 103, 117, 100, 95, 83, 87, 87, 81, 64, 78, 59, 63, 43, 66, 52, 1387],
+          type: 'line',
+          smooth: true
+        },
+        {
+          name: '4G',
+          data: [0, 0, 0, 30, 176, 1062, 5258, 13072, 23551, 33507, 38559, 40343, 36977, 31244, 27155,
+            31812, 35882, 26206, 19770, 15978, 13466, 11836, 10384, 9261, 7977, 7337, 6978, 6574, 5848,
+            5313, 4646, 4067, 3749, 3273, 2789, 2542, 2258, 2105, 39796],
+          type: 'line',
+          smooth: true
+        }
       ]
     };
   };
@@ -90,4 +96,4 @@ export default connect(
   dispatch => ({
     getChart: bindActionCreators(getChart, dispatch)
   })
-)(LineChart);
+)(NetworkLineChart);

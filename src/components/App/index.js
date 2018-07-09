@@ -10,7 +10,7 @@ class AppCom extends Component {
    constructor(props) {
       super(props);
       this.state = {
-         title: 'this is title'
+         title: ''
       };
    }
    static defaultProps = {
@@ -22,7 +22,7 @@ class AppCom extends Component {
 
       return (
          <div id="app-container">
-            <header className="header">this is React-ECharts-Template</header>
+            <header className="header">广告全链路分析</header>
             <div className="main">
                <SideBar className="main-sidebar" routePaths={routePaths} />
                <div className="main-charts-content">
