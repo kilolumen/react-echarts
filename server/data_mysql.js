@@ -147,9 +147,9 @@ async function getPieData() {
 async function getAverageData() {
   let data = [];
   const total = 662225;
-  const offSet = Math.floor(total * 0.05);
-  for (let index = 0; index < 20; index++) {
-    const element = Math.floor(total * 0.05 * index);
+  const offSet = Math.floor(total * 0.2);
+  for (let index = 0; index < 5; index++) {
+    const element = Math.floor(total * 0.2 * index);
     const sql = 'SELECT avg(cost_time+image_download_cost_time) FROM (SELECT * FROM mydb.ad_analysis where cost_time>0 and image_download_cost_time>0 order by cost_time+image_download_cost_time limit ' + element + ',' + offSet + ') as analysis';
     console.log(sql);
     let result = await query(sql);
@@ -157,6 +157,7 @@ async function getAverageData() {
   }
   console.log('[' + data.toString() + ']');
 }
+getAverageData();
 
 async function getNetworkData() {
   const SQL = 'SELECT count(*) FROM ad_analysis WHERE conntype=4 and cost_time>0 and image_download_cost_time>0 and ';
@@ -205,7 +206,6 @@ async function getPreAdData() {
 
   console.log('[' + data.toString() + ']');
 }
-getPreAdData();
 
 async function getImageSizeData() {
   const SQL = 'SELECT avg(image_download_cost_time) FROM ad_analysis WHERE ';
@@ -246,9 +246,9 @@ function combine() {
   const data1 = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400,
     1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600,
     2700, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 3500, 3600, 3700, 3800, Infinity];
-  const data2 = [514, 1584, 5553, 20767, 44487, 64137, 67358, 60027, 47284, 35432, 26842, 43028,
-    47387, 27039, 23279, 19607, 17247, 14776, 13140, 10989, 9512, 8616, 9100, 8069, 7117, 6379,
-    5390, 4781, 4238, 3572, 3177, 2751, 2575, 2626, 2396, 2118, 1836, 1669, 31833];
+  const data2 = [3853, 52664, 70308, 106330, 167777, 138528, 97556, 69682, 55115, 42591, 31177,
+    23233, 17960, 14163, 11198, 8962, 8008, 7438, 5517, 4632, 3858, 3197, 2807, 2478, 2224,
+    2023, 1688, 1497, 1372, 1253, 1121, 1001, 938, 849, 776, 876, 725, 628, 27368];
   let data = [];
   let string = '';
   for (let index = 0; index < data1.length; index++) {

@@ -109,10 +109,13 @@ class LineChart extends Component {
           type: 'line',
           smooth: true,
           markLine: {
-            name: '平均值',
             data: [
               { name: '平均值', xAxis: 2242 },
-              { name: '中位数', xAxis: 1648}
+              { name: '中位数', xAxis: 1648 },
+              { name: '20%', xAxis: 1070 },
+              { name: '40%', xAxis: 1386 },
+              { name: '60%', xAxis: 1739 },
+              { name: '80%', xAxis: 2515 },
             ],
             tooltip: {
               trigger: 'item',
