@@ -40,6 +40,21 @@ class SlowFullSliceChart extends Component {
         trigger: 'axis',
         axisPointer: {
           type: 'shadow'
+        },
+        formatter: function (params) {
+          console.log(params);
+          let sum = 0;
+          for (let index = 0; index < params.length; index++) {
+            const element = params[index];
+            sum += element['value'];
+          }
+          let string = params[0]['name'];
+          for (let index = 0; index < params.length; index++) {
+            const element = params[index];
+            const percent = ' (' + (element['value'] / sum * 100).toFixed(2) + '%' + ')';
+            string = string + '<br/>' + element['seriesName'] + ' : ' + element['value'] + percent;
+          }
+          return string;
         }
       },
       legend: {

@@ -35,9 +35,7 @@ async function getLineData(loc) {
   
   console.log(loc + '[' + data.toString() + ']');
 }
-getLineData('Xian');
-getLineData('Chengdu');
-getLineData('Wuhan');
+
 
 async function getAdLineData() {
   let xData = ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000', '1100', '1200', '1300', '1400',
@@ -149,13 +147,13 @@ async function getPieData() {
 async function getAverageData() {
   let data = [];
   const total = 662225;
+  const offSet = Math.floor(total * 0.05);
   for (let index = 0; index < 20; index++) {
-    const element1 = Math.floor(total * 0.05 * index);
-    const element2 = Math.floor(total * 0.05 * (index + 1));
-    const sql = 'SELECT avg(cost_time+image_download_cost_time) FROM (SELECT * FROM mydb.ad_analysis where cost_time>0 and image_download_cost_time>0 order by cost_time+image_download_cost_time limit ' + element1 + ',' + element2 + ') as analysis';
+    const element = Math.floor(total * 0.05 * index);
+    const sql = 'SELECT avg(cost_time+image_download_cost_time) FROM (SELECT * FROM mydb.ad_analysis where cost_time>0 and image_download_cost_time>0 order by cost_time+image_download_cost_time limit ' + element + ',' + offSet + ') as analysis';
+    console.log(sql);
     let result = await query(sql);
     data.push(result[0]['avg(cost_time+image_download_cost_time)']);
-    console.log(sql);
   }
   console.log('[' + data.toString() + ']');
 }
@@ -185,7 +183,7 @@ async function getNetworkData() {
 }
 
 async function getPreAdData() {
-  const SQL = 'SELECT count(*) FROM ad_analysis WHERE ';
+  const SQL = 'SELECT count(*) FROM ad_analysis_ios WHERE ';
   let xData = ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000', '1100', '1200', '1300', '1400',
     '1500', '1600', '1700', '1800', '1900', '2000', '2100', '2200', '2300', '2400', '2500', '2600',
     '2700', '2800', '2900', '3000', '3100', '3200', '3300', '3400', '3500', '3600', '3700', '3800'];
@@ -207,6 +205,7 @@ async function getPreAdData() {
 
   console.log('[' + data.toString() + ']');
 }
+getPreAdData();
 
 async function getImageSizeData() {
   const SQL = 'SELECT avg(image_download_cost_time) FROM ad_analysis WHERE ';
@@ -227,4 +226,37 @@ async function getImageSizeData() {
   data.push(result[0]['avg(image_download_cost_time)']);
 
   console.log('[' + data.toString() + ']');
+}
+
+async function computer() {
+  const data = [0, 137, 592, 2127, 4728, 7809, 13487, 21652, 32350, 42274, 46617, 47627, 43618,
+    37272, 34440, 40402, 44136, 33269, 26054, 21349, 18106, 15816, 14152, 12977, 11112, 10224,
+    9694, 9053, 8160, 7335, 6405, 5610, 5321, 4879, 4303, 3883, 3495, 3267, 63245];
+  let sum = 0;
+  for (const key in data) {
+    if (data.hasOwnProperty(key)) {
+      const element = data[key];
+      sum += element;
+    }
+  }
+  console.log(sum);
+}
+
+function combine() {
+  const data1 = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400,
+    1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600,
+    2700, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 3500, 3600, 3700, 3800, Infinity];
+  const data2 = [514, 1584, 5553, 20767, 44487, 64137, 67358, 60027, 47284, 35432, 26842, 43028,
+    47387, 27039, 23279, 19607, 17247, 14776, 13140, 10989, 9512, 8616, 9100, 8069, 7117, 6379,
+    5390, 4781, 4238, 3572, 3177, 2751, 2575, 2626, 2396, 2118, 1836, 1669, 31833];
+  let data = [];
+  let string = '';
+  for (let index = 0; index < data1.length; index++) {
+    const element1 = data1[index];
+    const element2 = data2[index];
+    data.push([element1, element2]);
+    string = string + ',' + '[' + [element1, element2].toString() + ']'
+  }
+  // console.log(data.toString());
+  console.log(string);
 }

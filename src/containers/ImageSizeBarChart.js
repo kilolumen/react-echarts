@@ -78,7 +78,6 @@ class ImageSizeBarChart extends Component {
         {
           name: 'image time',
           type: 'bar',
-          stack: '总量',
           barWidth: 10,
           label: {
             normal: {
