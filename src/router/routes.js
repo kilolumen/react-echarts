@@ -12,7 +12,6 @@ import App from '../containers/App';
 import LineChart from '../containers/LineChart';
 import PieChart from '../containers/PieChart'
 import SliceChart from '../containers/SliceChart';
-import SlowSliceChart from '../containers/SlowSliceChart';
 import SlowFullSliceChart from '../containers/SlowFullSliceChart';
 import AverageBarChart from '../containers/AverageBarChart';
 import NetworkLineChart from '../containers/NetworkLineChart';
@@ -32,7 +31,6 @@ const Root = () => (
                      <Route path="/line" component={LineChart} />
                      <Route path="/pie" component={PieChart} />
                      <Route path="/slice" component={SliceChart} />
-                     <Route path="/slow_slice" component={SlowSliceChart} />
                      <Route path="/slow_full_slice" component={SlowFullSliceChart} />
                     <Route path="/average" component={AverageBarChart} />
                     <Route path="/network" component={NetworkLineChart} />

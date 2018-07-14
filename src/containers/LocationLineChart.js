@@ -101,7 +101,27 @@ class LocationLineChart extends Component {
             3934, 3045, 2391, 1881, 1522, 1300, 1103, 1016, 918, 781, 739, 714, 635, 573, 513, 427,
             392, 340, 325, 302, 244, 280, 4718],
         type: 'line',
-        smooth: true
+        smooth: true,
+        markLine: {
+            lineStyle: {
+              color: '#FF9726',
+              type: 'solid'
+            },
+            label: {
+              show: true,
+              formatter: '{b}\n{c}'
+            },
+            data: [
+              { name: '平均值', xAxis: 1257 },
+              { name: '中位数', xAxis: 824 },
+            ],
+            tooltip: {
+              trigger: 'item',
+              formatter: function (params) {
+                return params['name'] + ':' + params['value'];
+              }
+            }
+          }
         },
         {
           name: '北京',
@@ -109,21 +129,81 @@ class LocationLineChart extends Component {
             9977, 8214, 5860, 4668, 3785, 3150, 2776, 2291, 1873, 1763, 1795, 1707, 1635, 1454, 1384,
             1139, 911, 842, 757, 610, 584, 557, 535, 11115],
           type: 'line',
-          smooth: true
+          smooth: true,
+          markLine: {
+            lineStyle: {
+              color: '#FF9726',
+              type: 'solid'
+            },
+            label: {
+              show: true,
+              formatter: '{b}\n{c}'
+            },
+            data: [
+              { name: '平均值', xAxis: 1257 },
+              { name: '中位数', xAxis: 824 },
+            ],
+            tooltip: {
+              trigger: 'item',
+              formatter: function (params) {
+                return params['name'] + ':' + params['value'];
+              }
+            }
+          }
         },
         {
           name: '杭州',
           data: [0, 0, 0, 1, 3, 14, 103, 206, 474, 792, 913, 1030, 873, 704, 636, 704, 823, 668, 531,
             399, 346, 305, 266, 247, 193, 177, 158, 155, 162, 138, 110, 98, 100, 81, 82, 65, 59, 51, 1039],
           type: 'line',
-          smooth: true
+          smooth: true,
+          markLine: {
+            lineStyle: {
+              color: '#FF9726',
+              type: 'solid'
+            },
+            label: {
+              show: true,
+              formatter: '{b}\n{c}'
+            },
+            data: [
+              { name: '平均值', xAxis: 1257 },
+              { name: '中位数', xAxis: 824 },
+            ],
+            tooltip: {
+              trigger: 'item',
+              formatter: function (params) {
+                return params['name'] + ':' + params['value'];
+              }
+            }
+          }
         },
         {
           name: '西安',
           data: [0, 0, 0, 2, 13, 61, 148, 293, 582, 737, 910, 832, 709, 551, 492, 620, 661, 547, 431,
             394, 310, 259, 227, 194, 163, 156, 151, 151, 125, 111, 108, 101, 91, 79, 62, 68, 64, 58, 1130],
           type: 'line',
-          smooth: true
+          smooth: true,
+          markLine: {
+            lineStyle: {
+              color: '#FF9726',
+              type: 'solid'
+            },
+            label: {
+              show: true,
+              formatter: '{b}\n{c}'
+            },
+            data: [
+              { name: '平均值', xAxis: 1257 },
+              { name: '中位数', xAxis: 824 },
+            ],
+            tooltip: {
+              trigger: 'item',
+              formatter: function (params) {
+                return params['name'] + ':' + params['value'];
+              }
+            }
+          }
         },
         {
           name: '成都',
@@ -131,14 +211,54 @@ class LocationLineChart extends Component {
             3005, 2484, 2050, 1832, 1622, 1498, 1341, 1139, 1026, 981, 904, 762, 749, 653, 575, 588,
             437, 432, 388, 328, 329, 6756],
           type: 'line',
-          smooth: true
+          smooth: true,
+          markLine: {
+            lineStyle: {
+              color: '#FF9726',
+              type: 'solid'
+            },
+            label: {
+              show: true,
+              formatter: '{b}\n{c}'
+            },
+            data: [
+              { name: '平均值', xAxis: 1257 },
+              { name: '中位数', xAxis: 824 },
+            ],
+            tooltip: {
+              trigger: 'item',
+              formatter: function (params) {
+                return params['name'] + ':' + params['value'];
+              }
+            }
+          }
         },
         {
           name: '武汉',
           data: [0, 0, 0, 1, 7, 61, 137, 396, 793, 1232, 1386, 1424, 1269, 972, 903, 1063, 1133, 904,
             744, 573, 519, 455, 398, 355, 287, 265, 254, 243, 228, 182, 179, 160, 139, 127, 106, 110, 104, 86, 1762],
           type: 'line',
-          smooth: true
+          smooth: true,
+          markLine: {
+            lineStyle: {
+              color: '#FF9726',
+              type: 'solid'
+            },
+            label: {
+              show: true,
+              formatter: '{b}\n{c}'
+            },
+            data: [
+              { name: '平均值', xAxis: 1257 },
+              { name: '中位数', xAxis: 824 },
+            ],
+            tooltip: {
+              trigger: 'item',
+              formatter: function (params) {
+                return params['name'] + ':' + params['value'];
+              }
+            }
+          }
         },
       ]
     };

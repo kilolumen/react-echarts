@@ -83,10 +83,13 @@ class SliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideRight',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [162.2562]
+          data: [150.474]
         },
         {
           name: 'tcp',
@@ -95,10 +98,13 @@ class SliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideRight',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [77.8935]
+          data: [71.096]
         },
         {
           name: 'ssl',
@@ -107,10 +113,13 @@ class SliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideRight',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [246.2408]
+          data: [223.9737]
         },
         {
           name: 'request',
@@ -119,10 +128,13 @@ class SliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideRight',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [0.8511]
+          data: [0.7852]
         },
         {
           name: 'first pack',
@@ -131,10 +143,13 @@ class SliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideRight',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [270.1762]
+          data: [195.3877]
         },
         {
           name: 'response',
@@ -143,10 +158,13 @@ class SliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideRight',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [14.5738]
+          data: [12.2167]
         },
         {
           name: 'image',
@@ -155,15 +173,31 @@ class SliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideRight',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [1450.9047]
+          data: [1256.5424]
         }
       ]
     }
   };
+
 }
+
+function formatter(params) {
+  const array = [150.474, 71.096, 223.9737, 0.7852, 195.3877, 12.2167, 1256.5424];
+  let sum = 0;
+  for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+    sum += element;
+  }
+  const percent = '(' + (params['value'] / sum * 100).toFixed(2) + '%' + ')';
+  return params['value'] + '\n' + percent;
+}
+
 
 export default connect(
   state => ({ charts: state.charts }),

@@ -72,7 +72,19 @@ class SlowFullSliceChart extends Component {
       },
       yAxis: {
         type: 'category',
-        data: ['0-500', '500-1000', '1000-1500', '1500-2000', '2000-2500', '2500-3000', '3000-3500', '3500-∞']
+        data: ['0-500', '500-1000', '1000-1500', '1500-2000', '2000-2500', '2500-3000', '3000-3500', '3500-∞'],
+        axisLabel: {
+          formatter: function (value, index) {
+            const counts = [43113, 219617, 190411, 157302, 66904, 41361, 24163, 14605, 51935];
+            let sum = 0;
+            for (let index = 0; index < counts.length; index++) {
+              const element = counts[index];
+              sum += element;
+            }
+            return value + '\n' + '(' + counts[index] + ', ' + (counts[index] / sum * 100).toFixed(2) + '%' + ')';
+          }
+        }
+
       },
       series: [
         {
@@ -83,10 +95,13 @@ class SlowFullSliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideLeft',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [15.326, 32.0763, 44.9249, 54.0464, 76.5737, 119.1256, 167.376, 1022.2622]
+          data: [20.7142, 36.1721, 48.5724, 56.3067, 82.9198, 148.1582, 179.0878, 1184.9932]
         },
         {
           name: 'tcp',
@@ -95,10 +110,13 @@ class SlowFullSliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideLeft',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [14.8374, 39.4272, 58.0076, 61.5308, 71.703, 77.2898, 88.8032, 236.4429]
+          data: [28.0077, 47.9405, 56.578, 59.4326, 67.5779, 75.8182, 84.86, 240.1603]
         },
         {
           name: 'ssl',
@@ -107,10 +125,13 @@ class SlowFullSliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideLeft',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [49.8956, 112.0175, 165.6663, 177.5538, 213.4048, 228.173, 262.454, 925.768]
+          data: [78.2941, 137.6481, 168.0098, 174.7939, 207.5005, 226.6253, 259.5116, 881.702]
         },
         {
           name: 'request',
@@ -119,10 +140,13 @@ class SlowFullSliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideLeft',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [0.0327, 0.0692, 0.2816, 0.3017, 0.4527, 0.5054, 0.6003, 5.5383]
+          data: [0.0397, 0.1884, 0.3249, 0.2947, 0.4959, 0.4931, 0.7096, 6.2147]
         },
         {
           name: 'first pack',
@@ -131,10 +155,13 @@ class SlowFullSliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideLeft',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [102.5696, 147.2389, 184.3697, 212.3946, 256.7117, 279.3347, 349.9812, 854.2923]
+          data: [84.1426, 146.2631, 166.7496, 171.1348, 181.678, 191.3778, 213.3373, 578.6483]
         },
         {
           name: 'response',
@@ -143,10 +170,13 @@ class SlowFullSliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideLeft',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [1.3089, 3.329, 4.8868, 5.6617, 7.4137, 10.237, 15.3508, 107.4386]
+          data: [2.2298, 3.7946, 5.0552, 5.5787, 8.2736, 11.2796, 15.8669, 85.8921]
         },
         {
           name: 'image',
@@ -155,14 +185,36 @@ class SlowFullSliceChart extends Component {
           label: {
             normal: {
               show: true,
-              position: 'insideRight'
+              position: 'insideRight',
+              formatter: function (params) {
+                return formatter(params);
+              }
             }
           },
-          data: [252.902, 505.2671, 765.0947, 1191.3435, 1580.0793, 2000.5325, 2321.0715, 4752.4146]
+          data: [170.5427, 391.4102, 770.6129, 1235.7151, 1659.3755, 2061.7506, 2456.1244, 4914.1933]
         }
       ]
     }
   };
+}
+
+function formatter(params) {
+  const array = [[20.7142, 36.1721, 48.5724, 56.3067, 82.9198, 148.1582, 179.0878, 1184.9932],
+    [28.0077, 47.9405, 56.578, 59.4326, 67.5779, 75.8182, 84.86, 240.1603],
+    [78.2941, 137.6481, 168.0098, 174.7939, 207.5005, 226.6253, 259.5116, 881.702],
+    [0.0397, 0.1884, 0.3249, 0.2947, 0.4959, 0.4931, 0.7096, 6.2147],
+    [84.1426, 146.2631, 166.7496, 171.1348, 181.678, 191.3778, 213.3373, 578.6483],
+    [2.2298, 3.7946, 5.0552, 5.5787, 8.2736, 11.2796, 15.8669, 85.8921],
+    [170.5427, 391.4102, 770.6129, 1235.7151, 1659.3755, 2061.7506, 2456.1244, 4914.1933]];
+
+  const dataIndex = params['dataIndex'];
+  let sum = 0;
+  for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+    sum += element[dataIndex];
+  }
+  const percent = '(' + (params['value'] / sum * 100).toFixed(2) + '%' + ')';
+  return params['value'] + '\n' + percent;
 }
 
 export default connect(

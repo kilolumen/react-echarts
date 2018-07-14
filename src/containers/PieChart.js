@@ -43,7 +43,7 @@ class PieChart extends Component {
       legend: {
         orient: 'vertical',
         right: 'right',
-        data: ['0-1000', '1000-2000', '2000-3000', '3000-4000', '4000-∞'],
+        data: ['0-500', '500-1000', '1000-1500', '1500-2000', '2000-2500', '2500-3000', '3000-3500', '3500-4000', '4000-∞'],
       },
       series: [
         {
@@ -52,17 +52,27 @@ class PieChart extends Component {
           radius: '55%',
           center: ['40%', '50%'],
           data: [
-            { value: 101450, name: '0-1000' },
-            { value: 358947, name: '1000-2000' },
-            { value: 109100, name: '2000-3000' },
-            { value: 39326, name: '3000-4000' },
-            { value: 57657, name: '4000-∞' }
+            { value: 43113, name: '0-500' },
+            { value: 219617, name: '500-1000' },
+            { value: 190411, name: '1000-1500' },
+            { value: 157302, name: '1500-2000' },
+            { value: 66904, name: '2000-2500' },
+            { value: 41361, name: '2500-3000' },
+            { value: 24163, name: '3000-3500' },
+            { value: 14605, name: '3500-4000' },
+            { value: 51935, name: '4000-∞' },
+            { value: 191736, name: '失败' }
           ],
           itemStyle: {
             emphasis: {
               shadowBlur: 10,
               shadowOffsetX: 0,
               shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          },
+          label: {
+            normal: {
+              formatter: '{b} : {c} ({d}%)'
             }
           }
         }

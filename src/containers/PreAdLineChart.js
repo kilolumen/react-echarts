@@ -46,7 +46,7 @@ class PreAdLineChart extends Component {
             [3853, 52664, 70308, 106330, 167777, 138528, 97556, 69682, 55115, 42591, 31177,
               23233, 17960, 14163, 11198, 8962, 8008, 7438, 5517, 4632, 3858, 3197, 2807, 2478, 2224,
               2023, 1688, 1497, 1372, 1253, 1121, 1001, 938, 849, 776, 876, 725, 628, 27368]];
-          let string = params[0]['name'];
+          let string = params[0]['value'][0];
           for (let index = 0; index < params.length; index++) {
             const element = params[index];
             const seriesData = data[element['seriesIndex']]
@@ -62,7 +62,7 @@ class PreAdLineChart extends Component {
             }
 
             string = string + '<br/>' + element['marker'] + element['seriesName'] + ' : ' +
-            element['value'] + ' (' + (element['value'] / sum * 100).toFixed(2) +
+            element['value'][1] + ' (' + (element['value'][1] / sum * 100).toFixed(2) +
             '%, ' + (currentSum / sum * 100).toFixed(2) + '%)';
 
           }
@@ -95,10 +95,9 @@ class PreAdLineChart extends Component {
           type: 'line',
           smooth: true,
           markLine: {
-            name: '平均值',
             data: [
               { name: '平均值', xAxis: 3127.86 },
-              { name: '中位数', xAxis: 528 }
+              { name: '中位数', xAxis: 842 }
             ],
             tooltip: {
               trigger: 'item',
@@ -119,10 +118,9 @@ class PreAdLineChart extends Component {
           type: 'line',
           smooth: true,
           markLine: {
-            name: '平均值',
             data: [
               { name: '平均值', xAxis: 2034.53 },
-              { name: '中位数', xAxis: 564 }
+              { name: '中位数', xAxis: 568 }
             ],
             tooltip: {
               trigger: 'item',

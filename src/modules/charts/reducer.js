@@ -20,10 +20,6 @@ const initialState = {
         name: '切片分析'
       },
       {
-        path: 'slow_slice',
-        name: '慢请求分析'
-      },
-      {
         path: 'slow_full_slice',
         name: '全链路慢请求'
       },
